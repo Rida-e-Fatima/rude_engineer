@@ -5,7 +5,7 @@ import "./globals.css";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import Navbar from "./components/Navbar";
 import HomePage from "./index/page"; 
-import Footer from "./footer/page"
+import Footer from "./components/Footer"
 
 export default function Home() {
  

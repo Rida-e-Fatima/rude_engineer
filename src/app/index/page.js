@@ -1,14 +1,11 @@
 "use client";
-// import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-// import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
-import Image from "next/image";
-
 import {
   FaFolderOpen,
   FaGraduationCap,
   FaBriefcase,
   FaPhone,
+  FaTools,
 } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
@@ -16,26 +13,13 @@ const page = () => {
   const router = useRouter();
 
   const cards = [
-    {
-      title: "Portfolio Projects",
-     icon:<FaFolderOpen />,
-      link: "/work",
-    },
-    {
-      title: "Education",
-      icon: <FaGraduationCap />,
-      link: "/education",
-    },
-    {
-      title: "Experience",
-      icon: <FaBriefcase />,
-      link: "/experience",
-    },
-    {
-      title: "Contact",
-      icon: <FaPhone />,
-      link: "/contact",
-    },
+    // { title: "About", link: "/about" },
+    { title: "Portfolio Projects", icon: <FaFolderOpen />, link: "/work" },
+    { title: "Skills", icon: <FaTools  />, link: "/skill" },
+    { title: "Education", icon: <FaGraduationCap />, link: "/education" },
+    { title: "Experience", icon: <FaBriefcase />, link: "/experience" },
+    { title: "Contact", icon: <FaPhone />, link: "/contact" },
+    { } 
   ];
 
   const fiverrGigs = [
@@ -60,75 +44,30 @@ const page = () => {
   ];
 
   return (
-    <>
-      <section className="text-gray-600 body-font my-4">
-        <div className="container px-5 mx-auto ">
-          <div className="grid grid-cols-12 gap-3 ">
-            {/* First row: Large Card (8 cols) & Small Card (4 cols) */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            className="col-span-12 lg:col-span-8 p-4 cursor-pointer rounded-3xl bg-[#000000] shadow-[0_3px_5px_0_#f600a8] backdrop-blur-[1px]">
-              <div className="h-full  w-full flex flex-col  ">
-                <h2 className="text-4xl font-semibold mb-4 text-white text-center">
-                  Serve on{" "}
-                  <motion.span
-                    animate={{
-                      textShadow: [
-                        "0px 0px 5px rgba(34, 197, 94, 0.8)", // Light green glow
-                        "0px 0px 10px rgba(34, 197, 94, 1)", // Stronger green glow
-                        "0px 0px 15px rgba(34, 197, 94, 0.8)", // Maximum glow intensity
-                        "0px 0px 10px rgba(34, 197, 94, 1)",
-                        "0px 0px 5px rgba(34, 197, 94, 0.8)",
-                      ],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="text-green-900 text-5xl"
-                  >
-                    Fiverr
-                  </motion.span>
-                </h2>
-
-                {/* Dynamic Images Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-col items-center justify-center ">
-                  {fiverrGigs.map((gig) => (
-                    <a
-                      key={gig.id}
-                      href={gig.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      <motion.div
-                        className="rounded-xl overflow-hidden"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                      >
-                        <img
-                          src={gig.image}
-                          alt={`Gig ${gig.id}`}
-                          className="w-full h-auto"
-                        />
-                      </motion.div>
-                    </a>
-                  ))}
-                </div>
-
-                <motion.h1
-                  onClick={() => router.push("/about")}
+    <section className="bg-[#000000] flex flex-col justify-center align-items-center py-5">
+      <div className="container px-5 mx-auto">
+        {/* Grid Layout */}
+        <div className="grid grid-cols-12 gap-5">
+          {/* First Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="col-span-12 lg:col-span-5 p-4 rounded-3xl bg-[#000000] shadow-[0_3px_5px_0_#f600a8] backdrop-blur-[1px]"
+          >
+            <div className="h-full flex flex-col">
+             
+                
+              <h2 className="text-4xl font-semibold text-white pb-2">
+                Serve on
+                <motion.span
                   animate={{
                     textShadow: [
-                      "0px 0px 5px rgba(255, 255, 255, 0.8)",
-                      "0px 0px 10px rgba(255, 255, 255, 1)",
-                      "0px 0px 15px rgba(255, 255, 255, 0.8)",
-                      "0px 0px 10px rgba(255, 255, 255, 1)",
-                      "0px 0px 5px rgba(255, 255, 255, 0.8)",
+                      "0px 0px 5px rgba(34, 197, 94, 0.8)",
+                      "0px 0px 10px rgba(34, 197, 94, 1)",
+                      "0px 0px 15px rgba(34, 197, 94, 0.8)",
+                      "0px 0px 10px rgba(34, 197, 94, 1)",
+                      "0px 0px 5px rgba(34, 197, 94, 0.8)",
                     ],
                   }}
                   transition={{
@@ -136,45 +75,114 @@ const page = () => {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="text-white text-xl mt-4 cursor-pointer text-end"
+                  className="text-green-900 text-5xl"
                 >
-                  Know more
-                </motion.h1>
+                  Fiverr
+                </motion.span>
+              </h2>
+            
+             
+              {/* Dynamic Images Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-col items-center justify-center ">
+                {fiverrGigs.map((gig) => (
+                  <a
+                    key={gig.id}
+                    href={gig.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <motion.div
+                      className="rounded-xl overflow-hidden"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <img
+                        src={gig.image}
+                        alt={`Gig ${gig.id}`}
+                        className="w-full h-auto"
+                        loading="lazy"
+                      />
+                    </motion.div>
+                  </a>
+                ))}
               </div>
-            </motion.div>
 
-            {cards.map((card, index) => (
-              <motion.div
+
+            </div>
+          </motion.div>
+
+          {cards.slice(0, 2).map((card, index) => (
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-                key={index}
-                className="col-span-12 lg:col-span-4 p-4 rounded-3xl bg-[#000000] shadow-[0_3px_5px_0_#f600a8] backdrop-blur-[1px] h-full"
-              >
-                <div className="relative h-full w-full flex flex-col items-center justify-center text-center ">
-               {/* Main Heading */}
-                  <h1 className="text-3xl font-bold mb-4 text-[#f600a8]">
-                    {card.title}
-                  </h1>
-                  <motion.div
-                    onClick={() => router.push(card.link)}
-                    className=" text-white text-3xl drop-shadow-[0_0_10px_#f600a8] cursor-pointer border-2 rounded-full p-8"
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 1.5,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    {card.icon}
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              key={index}
+              className={`col-span-12 lg:col-span-${
+                index === 0 ? "4" : "3"
+              } p-4 rounded-3xl bg-[#000000] shadow-[0_3px_5px_0_#f600a8] backdrop-blur-[1px]`}
+            >
+              <div className="h-full flex flex-col items-center justify-center text-center">
+              <motion.div
+                  onClick={() => router.push(card.link)}
+                  className="relative text-white text-lg drop-shadow-[0_0_10px_#f600a8] cursor-pointer "
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 1.5,
+                    ease: "easeInOut",
+                  }}
+                >
+                  {card.icon}
+                </motion.div>
+                <h1 className="text-3xl font-bold mb-4 text-[#f600a8]">
+                  {card.title}
+                </h1>
+                <p className="text-white">
+                  The map in the array. Calls a defined callback function on each
+                  element of an array, and returns an array that contains the.
+                </p>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Second Row: Three equal divs (Each 4 columns) */}
+          {cards.slice(2, 5).map((card, index) => (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              key={index}
+              className="col-span-12 lg:col-span-4 p-4 rounded-3xl bg-[#000000] shadow-[0_3px_5px_0_#f600a8] backdrop-blur-[1px]"
+            >
+              
+              <div className="h-full flex flex-col items-center justify-center text-center">
+              <motion.div
+                  onClick={() => router.push(card.link)}
+                  className="relative text-white text-lg drop-shadow-[0_0_10px_#f600a8] cursor-pointer "
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 1.5,
+                    ease: "easeInOut",
+                  }}
+                >
+                  {card.icon}
+                </motion.div>
+                <h1 className="text-3xl font-bold mb-4 text-[#f600a8]">
+                  {card.title}
+                </h1>
+              
+                <p className="text-white">
+                  The map in the array. Calls a defined callback function on each
+                  element of an array, and returns an array that contains the.
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

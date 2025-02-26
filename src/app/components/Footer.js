@@ -1,13 +1,17 @@
 "use client";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-import React from 'react'
+import React from "react";
 
 const page = () => {
   return (
-    <div className=" bg-[#000000] text-white">
-       <footer className="bg-black text-white ">
+    <motion.section
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="text-white bg-[#000000] flex flex-col justify-center align-items-center py-5"
+    >
       <div className="container mx-auto flex flex-col md:flex-row justify-center space-x-5 items-center px-6">
         {/* Navigation Links */}
         <nav className="flex space-x-6 text-lg">
@@ -32,9 +36,13 @@ const page = () => {
         <a
           href="/resume.pdf"
           target="_blank"
-          className="bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-lg transition"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-3 shadow-[0_3px_5px_0_#f600a8] backdrop-blur-[1px] font-semibold px-5 py-3 rounded-lg transition-all duration-300  w-fit mx-auto"
         >
-          Download Resume
+          <span className="relative flex items-center justify-center w-6 h-6 bg-[#f600a8] rounded-full animate-pulse">
+            <FaDownload className="text-black text-sm " />
+          </span>
+          <span className="hover:underline">Download Resume</span>
         </a>
 
         {/* WhatsApp Floating Button */}
@@ -55,13 +63,8 @@ const page = () => {
           <FaWhatsapp />
         </motion.a>
       </div>
-    </footer>
-    </div>
-  )
-}
+    </motion.section>
+  );
+};
 
-export default page
-
-
-
-
+export default page;
